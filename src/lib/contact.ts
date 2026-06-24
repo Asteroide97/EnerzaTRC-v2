@@ -10,7 +10,7 @@ export function getWhatsAppHref(
   const phone = sanitizePhoneNumber(businessConfig.whatsapp);
 
   if (!phone) {
-    return "/contacto";
+    return "/cotizar";
   }
 
   const text = encodeURIComponent(message);
@@ -19,9 +19,9 @@ export function getWhatsAppHref(
 
 export function getPhoneHref() {
   const phone = sanitizePhoneNumber(businessConfig.phone);
-  return phone ? `tel:${phone}` : "/contacto";
+  return phone ? `tel:${phone}` : "/cotizar";
 }
 
 export function getMailHref() {
-  return businessConfig.email ? `mailto:${businessConfig.email}` : "/contacto";
+  return businessConfig.email ? `mailto:${businessConfig.email}` : "/cotizar";
 }

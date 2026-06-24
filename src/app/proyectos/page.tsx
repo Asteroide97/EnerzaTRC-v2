@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { PageHero } from "@/components/pages/page-hero";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { projects } from "@/data/projects";
+import { getWhatsAppHref } from "@/lib/contact";
 
 export const metadata = createMetadata({
   title: "Proyectos solares",
@@ -31,14 +32,14 @@ export default function ProyectosPage() {
             <CTAButton href="/cotizar" showArrow>
               Cotizar proyecto
             </CTAButton>
-            <CTAButton href="/contacto" variant="outline">
-              Contacto
+            <CTAButton href={getWhatsAppHref()} external variant="outline">
+              WhatsApp
             </CTAButton>
           </>
         }
       />
-      <Container className="space-y-16 py-16 lg:py-20">
-        <section className="space-y-8">
+      <Container className="space-y-12 py-14 lg:space-y-14 lg:py-16">
+        <section className="space-y-6">
           <SectionHeading
             eyebrow="Casos reales"
             title="Tres proyectos destacados"
@@ -47,14 +48,14 @@ export default function ProyectosPage() {
           <ProjectCarousel projects={projects} />
         </section>
 
-        <section className="cut-corner border border-foreground/12 bg-primary/10 p-8">
+        <section className="rounded-[28px] border border-border bg-muted/50 p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="field-label text-primary">Cotizacion</p>
-              <h2 className="mt-4 font-heading text-3xl font-semibold">
+              <h2 className="mt-3 font-heading text-3xl font-bold">
                 Si ya viste casos comparables, solicita tu cotizacion.
               </h2>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              <p className="mt-3 text-base leading-7 text-muted-foreground">
                 Comparte tu recibo CFE, tu ciudad y el objetivo del sistema para
                 orientar la solucion solar adecuada.
               </p>

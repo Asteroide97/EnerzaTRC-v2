@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { PageHero } from "@/components/pages/page-hero";
 import { PanelDashboardPreview } from "@/components/panel-control/panel-dashboard-preview";
 import { verifiedCurrentSiteContent } from "@/data/site-content";
+import { getWhatsAppHref } from "@/lib/contact";
 
 export const metadata = createMetadata({
   title: "Panel de control solar | Monitorea tu ahorro",
@@ -36,8 +37,8 @@ export default function PanelDeControlPublicPage() {
           </>
         }
       />
-      <Container className="space-y-16 py-16 lg:py-20">
-        <section className="space-y-8">
+      <Container className="space-y-14 py-14 lg:space-y-16 lg:py-16">
+        <section className="space-y-6">
           <SectionHeading
             eyebrow="Vista del cliente"
             title="Un panel pensado para entender el sistema con rapidez"
@@ -71,7 +72,7 @@ export default function PanelDeControlPublicPage() {
           </div>
         </section>
 
-        <section className="cut-corner border border-foreground/12 bg-primary/10 p-8">
+        <section className="rounded-[28px] border border-border bg-muted/50 p-8">
           <p className="field-label text-primary">Siguiente paso</p>
           <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight">
             Si quieres una propuesta con instalación, CFE y monitoreo, continúa con
@@ -81,8 +82,8 @@ export default function PanelDeControlPublicPage() {
             <CTAButton href="/cotizar" showArrow>
               Ir a cotizar
             </CTAButton>
-            <CTAButton href="/contacto" variant="outline">
-              Contacto
+            <CTAButton href={getWhatsAppHref()} external variant="outline">
+              WhatsApp
             </CTAButton>
           </div>
         </section>

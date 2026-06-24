@@ -24,7 +24,7 @@ declare global {
 }
 
 const selectClassName =
-  "h-11 w-full border border-white/16 bg-[#fbf7ef] px-4 text-sm text-foreground";
+  "h-11 w-full rounded-2xl border border-border bg-white px-4 text-base text-foreground";
 
 const defaultContactValues: ContactFormValues = {
   name: "",
@@ -58,12 +58,12 @@ export function ContactForm({
   formId,
   eyebrow = "Solicitud",
   title = "Cotiza tu proyecto solar",
-  description = "Déjanos tus datos para revisar tu recibo CFE, tu ciudad y el servicio que necesitas.",
+  description = "Dejanos tus datos para revisar tu recibo CFE, tu ciudad y el servicio que necesitas.",
   submitLabel = "Enviar solicitud",
-  secondaryCtaLabel = "Cotizar por WhatsApp",
+  secondaryCtaLabel,
   submitMicrocopy,
   projectPrefillNote,
-  successMessage = "Recibimos tu solicitud. El siguiente paso es revisar tu consumo y el tipo de servicio para responder con una orientación inicial.",
+  successMessage = "Recibimos tu solicitud. El siguiente paso es revisar tu consumo y el tipo de servicio para responder con una orientacion inicial.",
   initialValues,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -142,7 +142,7 @@ export function ContactForm({
         setSubmitMessage(
           error instanceof Error
             ? error.message
-            : "Ocurrió un error al enviar el formulario.",
+            : "Ocurrio un error al enviar el formulario.",
         );
       } finally {
         setIsSubmitting(false);
@@ -153,69 +153,59 @@ export function ContactForm({
   return (
     <section
       id={formId}
-      className="cut-corner border border-foreground/14 bg-secondary p-6 text-secondary-foreground lg:p-8"
+      className="rounded-[28px] border border-border bg-card p-6 shadow-sm lg:p-8"
     >
       <div className="space-y-3">
         <p className="field-label text-primary">{eyebrow}</p>
-        <h2 className="font-heading text-3xl font-semibold tracking-tight">
+        <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground">
           {title}
         </h2>
-        <p className="max-w-2xl text-sm leading-7 text-slate-300">{description}</p>
+        <p className="max-w-2xl text-base leading-7 text-muted-foreground">
+          {description}
+        </p>
       </div>
 
-      <form className="mt-8 grid gap-8" onSubmit={handleSubmit(onSubmit)}>
-        <section className="section-rule grid gap-4 pt-6 md:grid-cols-2">
+      <form className="mt-8 grid gap-7" onSubmit={handleSubmit(onSubmit)}>
+        <section className="grid gap-4 border-t border-border pt-6 md:grid-cols-2">
           <div className="md:col-span-2">
-            <p className="field-label text-slate-400">Datos de contacto</p>
+            <p className="field-label text-primary">Datos de contacto</p>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-slate-300">
-              Nombre
-            </Label>
+            <Label htmlFor="name">Nombre</Label>
             <Input id="name" {...register("name")} />
-            {errors.name ? <p className="text-sm text-rose-300">{errors.name.message}</p> : null}
+            {errors.name ? <p className="text-sm text-rose-500">{errors.name.message}</p> : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone" className="text-slate-300">
-              Teléfono
-            </Label>
+            <Label htmlFor="phone">Telefono</Label>
             <Input id="phone" {...register("phone")} />
-            {errors.phone ? <p className="text-sm text-rose-300">{errors.phone.message}</p> : null}
+            {errors.phone ? <p className="text-sm text-rose-500">{errors.phone.message}</p> : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-slate-300">
-              Correo
-            </Label>
+            <Label htmlFor="email">Correo</Label>
             <Input id="email" type="email" {...register("email")} />
-            {errors.email ? <p className="text-sm text-rose-300">{errors.email.message}</p> : null}
+            {errors.email ? <p className="text-sm text-rose-500">{errors.email.message}</p> : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="city" className="text-slate-300">
-              Ciudad / colonia
-            </Label>
+            <Label htmlFor="city">Ciudad / colonia</Label>
             <Input id="city" {...register("city")} />
-            {errors.city ? <p className="text-sm text-rose-300">{errors.city.message}</p> : null}
+            {errors.city ? <p className="text-sm text-rose-500">{errors.city.message}</p> : null}
           </div>
         </section>
 
-        <section className="section-rule grid gap-4 pt-6 md:grid-cols-2">
-          <div className="md:col-span-2 space-y-3">
-            <p className="field-label text-slate-400">Datos del proyecto</p>
+        <section className="grid gap-4 border-t border-border pt-6 md:grid-cols-2">
+          <div className="space-y-3 md:col-span-2">
+            <p className="field-label text-primary">Datos del proyecto</p>
             {projectPrefillNote ? (
-              <p className="text-sm leading-7 text-slate-300">{projectPrefillNote}</p>
+              <p className="text-sm leading-7 text-muted-foreground">{projectPrefillNote}</p>
             ) : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="state" className="text-slate-300">
-              Estado
-            </Label>
+            <Label htmlFor="state">Estado</Label>
             <Input id="state" {...register("state")} />
-            {errors.state ? <p className="text-sm text-rose-300">{errors.state.message}</p> : null}
+            {errors.state ? <p className="text-sm text-rose-500">{errors.state.message}</p> : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="customerType" className="text-slate-300">
-              Tipo de inmueble
-            </Label>
+            <Label htmlFor="customerType">Tipo de inmueble</Label>
             <select id="customerType" className={selectClassName} {...register("customerType")}>
               {customerTypeOptions.map((item) => (
                 <option key={item} value={item}>
@@ -224,13 +214,11 @@ export function ContactForm({
               ))}
             </select>
             {errors.customerType ? (
-              <p className="text-sm text-rose-300">{errors.customerType.message}</p>
+              <p className="text-sm text-rose-500">{errors.customerType.message}</p>
             ) : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="service" className="text-slate-300">
-              Servicio requerido
-            </Label>
+            <Label htmlFor="service">Servicio requerido</Label>
             <select id="service" className={selectClassName} {...register("service")}>
               {serviceOptions.map((item) => (
                 <option key={item} value={item}>
@@ -239,57 +227,53 @@ export function ContactForm({
               ))}
             </select>
             {errors.service ? (
-              <p className="text-sm text-rose-300">{errors.service.message}</p>
+              <p className="text-sm text-rose-500">{errors.service.message}</p>
             ) : null}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="averageBill" className="text-slate-300">
-              Recibo CFE aproximado
-            </Label>
+            <Label htmlFor="averageBill">Recibo CFE aproximado</Label>
             <Input id="averageBill" placeholder="Ej. $4,800 MXN" {...register("averageBill")} />
             {errors.averageBill ? (
-              <p className="text-sm text-rose-300">{errors.averageBill.message}</p>
+              <p className="text-sm text-rose-500">{errors.averageBill.message}</p>
             ) : null}
           </div>
         </section>
 
-        <section className="section-rule grid gap-4 pt-6">
+        <section className="grid gap-4 border-t border-border pt-6">
           <div>
-            <p className="field-label text-slate-400">Mensaje adicional</p>
+            <p className="field-label text-primary">Mensaje adicional</p>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="message" className="text-slate-300">
-              Mensaje opcional
-            </Label>
+            <Label htmlFor="message">Mensaje opcional</Label>
             <Textarea
               id="message"
-              placeholder="Comparte más contexto sobre tu proyecto si lo consideras necesario."
+              placeholder="Comparte mas contexto sobre tu proyecto si lo consideras necesario."
               {...register("message")}
             />
-            {errors.message ? <p className="text-sm text-rose-300">{errors.message.message}</p> : null}
+            {errors.message ? <p className="text-sm text-rose-500">{errors.message.message}</p> : null}
           </div>
         </section>
 
         <input type="hidden" tabIndex={-1} autoComplete="off" {...register("company")} />
         <input type="hidden" {...register("sourceUrl")} />
 
-        <section className="section-rule grid gap-4 pt-6">
-          <label className="flex items-start gap-3 border border-white/14 bg-white/5 p-4 text-sm leading-6 text-slate-300">
+        <section className="grid gap-4 border-t border-border pt-6">
+          <label className="flex items-start gap-3 rounded-2xl border border-border bg-muted/40 p-4 text-sm leading-6 text-muted-foreground">
             <input
               type="checkbox"
-              className="mt-1 h-4 w-4 border-white/20"
+              className="mt-1 h-4 w-4 border-border"
               {...register("privacyAccepted")}
             />
             <span>
               Acepto el tratamiento de mis datos conforme al{" "}
-              <a href="/privacidad" className="font-medium text-white underline">
+              <a href="/privacidad" className="font-medium text-foreground underline">
                 aviso de privacidad
               </a>
               .
             </span>
           </label>
           {errors.privacyAccepted ? (
-            <p className="text-sm text-rose-300">{errors.privacyAccepted.message}</p>
+            <p className="text-sm text-rose-500">{errors.privacyAccepted.message}</p>
           ) : null}
         </section>
 
@@ -297,27 +281,24 @@ export function ContactForm({
           <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Enviando..." : submitLabel}
           </Button>
-          <CTAButton
-            href={getWhatsAppHref()}
-            external
-            variant="outline"
-            className="border-white/18 text-white hover:bg-white/5"
-          >
-            {secondaryCtaLabel}
-          </CTAButton>
+          {secondaryCtaLabel ? (
+            <CTAButton href={getWhatsAppHref()} external variant="outline">
+              {secondaryCtaLabel}
+            </CTAButton>
+          ) : null}
         </div>
 
         {submitMicrocopy ? (
-          <p className="text-sm leading-7 text-slate-400">{submitMicrocopy}</p>
+          <p className="text-sm leading-7 text-muted-foreground">{submitMicrocopy}</p>
         ) : null}
       </form>
 
       {submitState !== "idle" ? (
         <div
-          className={`mt-6 border p-4 text-sm leading-7 ${
+          className={`mt-6 rounded-2xl border p-4 text-sm leading-7 ${
             submitState === "success"
-              ? "border-success/30 bg-success/10 text-slate-100"
-              : "border-rose-400/30 bg-rose-500/10 text-rose-100"
+              ? "border-success/20 bg-success/10 text-foreground"
+              : "border-rose-300 bg-rose-50 text-rose-700"
           }`}
         >
           {submitMessage}

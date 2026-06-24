@@ -8,12 +8,16 @@ export const navLinks = [
   { href: "/servicios", label: "Servicios" },
   { href: "/proyectos", label: "Proyectos" },
   { href: "/nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
-export const headerLinks = navLinks.filter((link) =>
-  ["/", "/beneficios", "/servicios", "/proyectos", "/contacto"].includes(link.href),
-);
+export const headerLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/beneficios", label: "Beneficios" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/panel-de-control", label: "Panel de control" },
+  { href: "/nosotros", label: "Nosotros" },
+];
 
 export const operationsStrip = [
   "Instalación profesional",

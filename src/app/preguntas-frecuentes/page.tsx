@@ -7,6 +7,7 @@ import { PageHero } from "@/components/pages/page-hero";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { fullFaqs } from "@/data/site-content";
 import { getFaqJsonLd } from "@/lib/json-ld";
+import { getWhatsAppHref } from "@/lib/contact";
 
 export const metadata = createMetadata({
   title: "Preguntas frecuentes sobre paneles solares",
@@ -34,8 +35,8 @@ export default function PreguntasFrecuentesPage() {
             <CTAButton href="/cotizar" showArrow>
               Solicitar cotizacion
             </CTAButton>
-            <CTAButton href="/contacto" variant="outline">
-              Contacto
+            <CTAButton href={getWhatsAppHref()} external variant="outline">
+              WhatsApp
             </CTAButton>
           </>
         }

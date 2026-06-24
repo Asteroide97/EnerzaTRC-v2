@@ -25,13 +25,13 @@ export function OptionsMenu({ className }: OptionsMenuProps) {
           aria-label="Abrir menu de opciones"
         >
           <Menu className="h-4 w-4" />
-          Menu
+          Menú
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-secondary/45 backdrop-blur-sm" />
         <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col overflow-y-auto bg-background px-5 py-5 shadow-2xl">
-          <Dialog.Title className="sr-only">Menu de opciones</Dialog.Title>
+          <Dialog.Title className="sr-only">Menú de opciones</Dialog.Title>
           <Dialog.Description className="sr-only">
             Accesos rapidos a cotizacion, WhatsApp, servicios, proyectos y rutas principales del sitio.
           </Dialog.Description>

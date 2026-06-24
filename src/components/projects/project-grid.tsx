@@ -11,7 +11,7 @@ export function ProjectGrid({
   cardVariant = "default",
 }: ProjectGridProps) {
   return (
-    <div className="grid gap-5 lg:grid-cols-2 2xl:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} variant={cardVariant} />
       ))}
