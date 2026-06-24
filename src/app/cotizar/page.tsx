@@ -25,10 +25,10 @@ export default function CotizarPage() {
       <PageHero
         eyebrow="Cotizar"
         title="Cotiza tu proyecto solar"
-        description="Dejanos tus datos y te contactaremos para revisar tu recibo CFE, tipo de inmueble y servicio requerido."
+        description="Comparte tu ciudad, tipo de inmueble y recibo CFE aproximado. Con esa informacion podemos preparar una orientacion inicial para instalacion, mantenimiento o tramite CFE."
         actions={
           <CTAButton href={getWhatsAppHref()} external variant="outline">
-            WhatsApp
+            Abrir WhatsApp
           </CTAButton>
         }
       />
@@ -37,10 +37,11 @@ export default function CotizarPage() {
           formId="quote-contact-form"
           eyebrow="Solicitud"
           title="Envia tu solicitud"
-          description="Comparte tu ciudad, tipo de inmueble y recibo CFE aproximado para preparar una orientacion inicial."
-          submitLabel="Enviar solicitud"
-          submitMicrocopy="Usaremos tus datos unicamente para dar seguimiento a tu solicitud."
-          successMessage="Recibimos tu solicitud. Revisaremos tu caso y, si hace falta mas detalle, te pediremos tu recibo CFE mas reciente."
+          description="Completa tus datos para abrir WhatsApp con un mensaje precargado y avanzar mas rapido con la revision inicial."
+          submitLabel="Enviar por WhatsApp"
+          secondaryCtaLabel="Abrir WhatsApp"
+          submitMicrocopy="Al enviar, se abrira WhatsApp con tu solicitud precargada para que puedas confirmar el mensaje."
+          successMessage="Se abrio WhatsApp con tu solicitud precargada. Revisa el mensaje y envialo para continuar."
         />
 
         <aside className="space-y-4">
@@ -51,19 +52,20 @@ export default function CotizarPage() {
             </h2>
             <p className="mt-3 text-base leading-7 text-muted-foreground">
               Nos ayuda a revisar consumo mensual, tipo de tarifa y el contexto real
-              del proyecto antes de proponerte una orientacion inicial.
+              del proyecto antes de orientarte sobre el sistema o servicio que
+              necesitas.
             </p>
           </div>
 
           <div className="rounded-[28px] border border-primary/15 bg-primary/5 p-6">
             <p className="field-label text-primary">WhatsApp directo</p>
             <p className="mt-3 text-base leading-7 text-muted-foreground">
-              Si prefieres escribir primero, tambien puedes enviar tu solicitud por
-              WhatsApp con atencion directa.
+              Si prefieres escribir primero, tambien puedes abrir WhatsApp directo
+              con el mensaje base de cotizacion.
             </p>
             <div className="mt-4">
               <CTAButton href={getWhatsAppHref()} external>
-                WhatsApp
+                Abrir WhatsApp
               </CTAButton>
             </div>
           </div>

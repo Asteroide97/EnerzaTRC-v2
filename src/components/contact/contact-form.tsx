@@ -14,7 +14,7 @@ import {
   serviceOptions,
   type ContactFormValues,
 } from "@/lib/validators/contact";
-import { getWhatsAppHref } from "@/lib/contact";
+import { buildQuoteWhatsAppMessage, getWhatsAppHref } from "@/lib/contact";
 
 declare global {
   interface Window {
@@ -58,12 +58,14 @@ export function ContactForm({
   formId,
   eyebrow = "Solicitud",
   title = "Cotiza tu proyecto solar",
-  description = "Dejanos tus datos para revisar tu recibo CFE, tu ciudad y el servicio que necesitas.",
-  submitLabel = "Enviar solicitud",
+  description =
+    "Dejanos tus datos para revisar tu recibo CFE, tu ciudad y el servicio que necesitas.",
+  submitLabel = "Enviar por WhatsApp",
   secondaryCtaLabel,
   submitMicrocopy,
   projectPrefillNote,
-  successMessage = "Recibimos tu solicitud. El siguiente paso es revisar tu consumo y el tipo de servicio para responder con una orientacion inicial.",
+  successMessage =
+    "Se abrio WhatsApp con tu solicitud precargada. Revisa el mensaje y envialo para continuar.",
   initialValues,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -99,55 +101,44 @@ export function ContactForm({
     });
   }, [initialValues, reset]);
 
-  const onSubmit = (values: ContactFormValues) => {
+  const onSubmit = async (values: ContactFormValues) => {
     setSubmitState("idle");
     setSubmitMessage("");
     setIsSubmitting(true);
 
-    void (async () => {
-      try {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        });
+    try {
+      const message = buildQuoteWhatsAppMessage(values);
+      const whatsappHref = getWhatsAppHref(message);
+      const popup = window.open(whatsappHref, "_blank", "noopener,noreferrer");
 
-        if (!response.ok) {
-          const data = (await response.json().catch(() => null)) as
-            | { error?: string }
-            | null;
-          throw new Error(data?.error || "No fue posible enviar la solicitud.");
-        }
-
-        window.gtag?.("event", "generate_lead", {
-          event_category: "contact",
-          event_label: values.service,
-        });
-        window.dataLayer?.push({
-          event: "generate_lead",
-          form_name: "contacto_enerza",
-          service: values.service,
-        });
-
-        setSubmitState("success");
-        setSubmitMessage(successMessage);
-        reset({
-          ...defaultContactValues,
-          sourceUrl: window.location.href,
-        });
-      } catch (error) {
-        setSubmitState("error");
-        setSubmitMessage(
-          error instanceof Error
-            ? error.message
-            : "Ocurrio un error al enviar el formulario.",
-        );
-      } finally {
-        setIsSubmitting(false);
+      if (!popup) {
+        window.location.assign(whatsappHref);
       }
-    })();
+
+      window.gtag?.("event", "generate_lead", {
+        event_category: "contact",
+        event_label: values.service,
+      });
+      window.dataLayer?.push({
+        event: "generate_lead",
+        form_name: "contacto_enerza",
+        service: values.service,
+      });
+
+      setSubmitState("success");
+      setSubmitMessage(successMessage);
+      reset({
+        ...defaultContactValues,
+        sourceUrl: window.location.href,
+      });
+    } catch {
+      setSubmitState("error");
+      setSubmitMessage(
+        "No fue posible abrir WhatsApp. Verifica tu conexion e intenta de nuevo.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -173,22 +164,30 @@ export function ContactForm({
           <div className="space-y-2">
             <Label htmlFor="name">Nombre</Label>
             <Input id="name" {...register("name")} />
-            {errors.name ? <p className="text-sm text-rose-500">{errors.name.message}</p> : null}
+            {errors.name ? (
+              <p className="text-sm text-rose-500">{errors.name.message}</p>
+            ) : null}
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Telefono</Label>
             <Input id="phone" {...register("phone")} />
-            {errors.phone ? <p className="text-sm text-rose-500">{errors.phone.message}</p> : null}
+            {errors.phone ? (
+              <p className="text-sm text-rose-500">{errors.phone.message}</p>
+            ) : null}
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Correo</Label>
             <Input id="email" type="email" {...register("email")} />
-            {errors.email ? <p className="text-sm text-rose-500">{errors.email.message}</p> : null}
+            {errors.email ? (
+              <p className="text-sm text-rose-500">{errors.email.message}</p>
+            ) : null}
           </div>
           <div className="space-y-2">
             <Label htmlFor="city">Ciudad / colonia</Label>
             <Input id="city" {...register("city")} />
-            {errors.city ? <p className="text-sm text-rose-500">{errors.city.message}</p> : null}
+            {errors.city ? (
+              <p className="text-sm text-rose-500">{errors.city.message}</p>
+            ) : null}
           </div>
         </section>
 
@@ -196,17 +195,25 @@ export function ContactForm({
           <div className="space-y-3 md:col-span-2">
             <p className="field-label text-primary">Datos del proyecto</p>
             {projectPrefillNote ? (
-              <p className="text-sm leading-7 text-muted-foreground">{projectPrefillNote}</p>
+              <p className="text-sm leading-7 text-muted-foreground">
+                {projectPrefillNote}
+              </p>
             ) : null}
           </div>
           <div className="space-y-2">
             <Label htmlFor="state">Estado</Label>
             <Input id="state" {...register("state")} />
-            {errors.state ? <p className="text-sm text-rose-500">{errors.state.message}</p> : null}
+            {errors.state ? (
+              <p className="text-sm text-rose-500">{errors.state.message}</p>
+            ) : null}
           </div>
           <div className="space-y-2">
             <Label htmlFor="customerType">Tipo de inmueble</Label>
-            <select id="customerType" className={selectClassName} {...register("customerType")}>
+            <select
+              id="customerType"
+              className={selectClassName}
+              {...register("customerType")}
+            >
               {customerTypeOptions.map((item) => (
                 <option key={item} value={item}>
                   {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -232,7 +239,11 @@ export function ContactForm({
           </div>
           <div className="space-y-2">
             <Label htmlFor="averageBill">Recibo CFE aproximado</Label>
-            <Input id="averageBill" placeholder="Ej. $4,800 MXN" {...register("averageBill")} />
+            <Input
+              id="averageBill"
+              placeholder="Ej. $4,800 MXN"
+              {...register("averageBill")}
+            />
             {errors.averageBill ? (
               <p className="text-sm text-rose-500">{errors.averageBill.message}</p>
             ) : null}
@@ -250,7 +261,9 @@ export function ContactForm({
               placeholder="Comparte mas contexto sobre tu proyecto si lo consideras necesario."
               {...register("message")}
             />
-            {errors.message ? <p className="text-sm text-rose-500">{errors.message.message}</p> : null}
+            {errors.message ? (
+              <p className="text-sm text-rose-500">{errors.message.message}</p>
+            ) : null}
           </div>
         </section>
 
@@ -279,7 +292,7 @@ export function ContactForm({
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Enviando..." : submitLabel}
+            {isSubmitting ? "Abriendo WhatsApp..." : submitLabel}
           </Button>
           {secondaryCtaLabel ? (
             <CTAButton href={getWhatsAppHref()} external variant="outline">

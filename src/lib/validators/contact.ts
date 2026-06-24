@@ -9,18 +9,20 @@ export const customerTypeOptions = [
 ] as const;
 
 export const serviceOptions = [
-  "Instalación de paneles solares",
-  "Mantenimiento",
-  "Trámite CFE",
+  "Instalacion de paneles solares",
+  "Mantenimiento de sistemas solares",
+  "Tramite CFE e interconexion",
+  "Sistemas solares residenciales",
+  "Sistemas solares comerciales",
+  "Sistemas solares industriales",
   "Bombeo solar",
-  "Diagnóstico",
-  "Otro",
+  "Diagnostico",
 ] as const;
 
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Ingresa tu nombre."),
-  email: z.string().trim().email("Ingresa un correo válido."),
-  phone: z.string().trim().min(7, "Ingresa un teléfono válido."),
+  email: z.string().trim().email("Ingresa un correo valido."),
+  phone: z.string().trim().min(7, "Ingresa un telefono valido."),
   city: z.string().trim().min(2, "Ingresa tu ciudad o colonia."),
   state: z.string().trim().min(2, "Ingresa tu estado."),
   customerType: z.enum(customerTypeOptions, {
