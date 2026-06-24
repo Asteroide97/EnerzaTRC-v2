@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0f172a"/>
+  <rect x="88" y="100" width="244" height="40" rx="20" fill="#10b981"/>
+  <text x="88" y="238" fill="#ffffff" font-family="Arial, sans-serif" font-size="68" font-weight="700">San Pedro industrial</text>
+  <text x="88" y="300" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Ingenieria solar para consumo operativo alto</text>
+  <circle cx="990" cy="178" r="88" fill="#facc15"/>
+  <path d="M735 520l86-176h94l-86 176zm136 0l86-176h94l-86 176zm136 0l68-138v138z" fill="#10b981"/>
+</svg>

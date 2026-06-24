@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0b1324"/>
+  <rect x="82" y="82" width="1036" height="636" rx="28" fill="#111827" stroke="#facc15" stroke-width="2"/>
+  <text x="112" y="176" fill="#facc15" font-family="Arial, sans-serif" font-size="32" letter-spacing="5">MONTERREY COVERAGE</text>
+  <text x="112" y="258" fill="#ffffff" font-family="Arial, sans-serif" font-size="66" font-weight="700">Instalacion profesional</text>
+  <text x="112" y="320" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Placeholder para evidencia del sitio y ejecucion</text>
+  <path d="M760 500l82-170h96l-82 170zm128 0l82-170h96l-82 170zm128 0l82-170h72v170z" fill="#10b981"/>
+</svg>

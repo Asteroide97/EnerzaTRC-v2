@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0b1324"/>
+  <path d="M0 640c180-110 350-160 520-160 220 0 390 90 680 190V800H0z" fill="#162947"/>
+  <path d="M0 580c160-80 330-120 510-120 240 0 430 92 690 185V800H0z" fill="#1d3557"/>
+  <circle cx="965" cy="178" r="92" fill="#facc15"/>
+  <rect x="84" y="104" width="330" height="42" rx="21" fill="#10b981"/>
+  <text x="88" y="254" fill="#ffffff" font-family="Arial, sans-serif" font-size="68" font-weight="700">Cobertura norte</text>
+  <text x="88" y="316" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Placeholder de portafolio para Torreon, La Laguna y Monterrey</text>
+  <path d="M730 420l94-190h98l-94 190zm144 0l94-190h98l-94 190zm144 0l94-190h72v190z" fill="#facc15"/>
+</svg>

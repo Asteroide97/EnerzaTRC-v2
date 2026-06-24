@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0f172a"/>
+  <g opacity=".13">
+    <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M0 600h1200M0 720h1200M120 0v800M240 0v800M360 0v800M480 0v800M600 0v800M720 0v800M840 0v800M960 0v800M1080 0v800" stroke="#ffffff"/>
+  </g>
+  <rect x="88" y="110" width="220" height="40" rx="20" fill="#10b981"/>
+  <text x="88" y="246" fill="#ffffff" font-family="Arial, sans-serif" font-size="68" font-weight="700">Torreon residencial</text>
+  <text x="88" y="308" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Sistema solar pensado para consumo real del hogar</text>
+  <circle cx="980" cy="176" r="90" fill="#facc15"/>
+</svg>

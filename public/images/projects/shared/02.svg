@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#13233d"/>
+  <g fill="none" stroke="#10b981" opacity=".16">
+    <rect x="74" y="74" width="1052" height="652" rx="26"/>
+    <rect x="124" y="124" width="952" height="552" rx="24"/>
+    <path d="M124 260h952M124 396h952M124 532h952M350 124v552M576 124v552M802 124v552"/>
+  </g>
+  <text x="96" y="158" fill="#facc15" font-family="Arial, sans-serif" font-size="32" letter-spacing="5">PROJECT MOCKUP</text>
+  <text x="96" y="240" fill="#ffffff" font-family="Arial, sans-serif" font-size="66" font-weight="700">Ingenieria solar regional</text>
+  <text x="96" y="302" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Material editable para casos de estudio, no fotografia final</text>
+  <circle cx="1010" cy="198" r="88" fill="#facc15"/>
+</svg>

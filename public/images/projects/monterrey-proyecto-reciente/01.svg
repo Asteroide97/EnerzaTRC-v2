@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#13233d"/>
+  <g opacity=".12">
+    <path d="M0 100h1200M0 200h1200M0 300h1200M0 400h1200M0 500h1200M0 600h1200M0 700h1200M120 0v800M240 0v800M360 0v800M480 0v800M600 0v800M720 0v800M840 0v800M960 0v800M1080 0v800" stroke="#ffffff"/>
+  </g>
+  <text x="92" y="168" fill="#facc15" font-family="Arial, sans-serif" font-size="32" letter-spacing="5">MONTERREY CASE</text>
+  <text x="92" y="248" fill="#ffffff" font-family="Arial, sans-serif" font-size="66" font-weight="700">Diagnostico y dimensionamiento</text>
+  <text x="92" y="310" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Mock visual editable para fotografia final del proyecto</text>
+  <circle cx="1010" cy="190" r="88" fill="#10b981"/>
+</svg>

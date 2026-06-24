@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 38% 98%;
+    --foreground: 214 51% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 51% 18%;
+    --border: 212 30% 79%;
+    --input: 210 28% 92%;
+    --ring: 132 46% 49%;
+    --primary: 208 64% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 212 66% 20%;
+    --secondary-foreground: 210 45% 98%;
+    --muted: 210 28% 94%;
+    --muted-foreground: 214 20% 40%;
+    --accent: 112 42% 50%;
+    --accent-foreground: 214 51% 18%;
+    --success: 112 42% 50%;
+    --success-foreground: 214 51% 18%;
+    --graph-1: 208 64% 45%;
+    --graph-2: 112 42% 50%;
+    --graph-3: 212 66% 20%;
+    --graph-4: 205 44% 66%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top right, rgba(42, 116, 187, 0.12), transparent 26%),
+      radial-gradient(circle at bottom left, rgba(88, 180, 74, 0.09), transparent 24%);
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  ::selection {
+    background: rgba(88, 180, 74, 0.28);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .cut-corner {
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+
+  .technical-grid {
+    background-image:
+      linear-gradient(to right, rgba(20, 60, 107, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20, 60, 107, 0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .field-label {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .section-rule {
+    border-top: 1px solid rgba(20, 60, 107, 0.16);
+  }
+
+  .spec-table {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .spec-table > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 0.85rem;
+  }
+
+  .spec-table > div:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .spec-table dt {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: rgba(226, 232, 240, 0.78);
+  }
+
+  .spec-table dd {
+    font-size: 0.94rem;
+    font-weight: 600;
+  }
+
+  .project-plate {
+    border: 1px solid rgba(20, 60, 107, 0.12);
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  .diagonal-band {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagonal-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(128deg, rgba(42, 116, 187, 0.14) 0 20%, transparent 20% 100%),
+      linear-gradient(180deg, rgba(88, 180, 74, 0.08), rgba(20, 60, 107, 0.04));
+    pointer-events: none;
+  }
+}

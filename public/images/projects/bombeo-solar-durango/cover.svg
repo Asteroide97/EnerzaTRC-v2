@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#162947"/>
+  <path d="M0 620c200-120 410-180 600-180 230 0 410 78 600 190V800H0z" fill="#0f172a"/>
+  <text x="90" y="176" fill="#10b981" font-family="Arial, sans-serif" font-size="30" letter-spacing="5">DURANGO RURAL</text>
+  <text x="90" y="260" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">Bombeo solar</text>
+  <text x="90" y="322" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Solucion para operacion agricola y contexto rural</text>
+  <circle cx="975" cy="176" r="92" fill="#facc15"/>
+</svg>

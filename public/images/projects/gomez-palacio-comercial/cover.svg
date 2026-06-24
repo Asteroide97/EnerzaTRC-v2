@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#13233d"/>
+  <rect x="82" y="82" width="1036" height="636" rx="30" fill="none" stroke="#10b981" stroke-width="2" opacity=".35"/>
+  <text x="92" y="176" fill="#facc15" font-family="Arial, sans-serif" font-size="30" letter-spacing="5">GOMEZ PALACIO</text>
+  <text x="92" y="258" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">Operacion comercial</text>
+  <text x="92" y="320" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Proyecto orientado a continuidad y consumo del negocio</text>
+  <path d="M770 500l88-180h96l-88 180zm138 0l88-180h96l-88 180zm138 0l72-148v148z" fill="#facc15"/>
+</svg>

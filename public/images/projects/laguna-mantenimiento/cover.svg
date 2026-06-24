@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0b1324"/>
+  <path d="M0 640h1200" stroke="#10b981" stroke-width="2" stroke-dasharray="10 14" opacity=".45"/>
+  <text x="92" y="174" fill="#facc15" font-family="Arial, sans-serif" font-size="30" letter-spacing="5">LA LAGUNA</text>
+  <text x="92" y="258" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">Mantenimiento y diagnostico</text>
+  <text x="92" y="320" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="28">Revision tecnica para sistema existente</text>
+  <circle cx="972" cy="182" r="86" fill="#10b981"/>
+  <rect x="758" y="420" width="270" height="170" rx="26" fill="#111827" stroke="#facc15" stroke-width="2"/>
+</svg>

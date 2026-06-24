@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0f172a"/>
+  <g opacity=".12">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200M0 640h1200M0 720h1200M100 0v800M200 0v800M300 0v800M400 0v800M500 0v800M600 0v800M700 0v800M800 0v800M900 0v800M1000 0v800M1100 0v800" stroke="#ffffff"/>
+  </g>
+  <rect x="86" y="520" width="1028" height="180" rx="28" fill="#111827"/>
+  <text x="90" y="170" fill="#facc15" font-family="Arial, sans-serif" font-size="34" letter-spacing="5">ENERZA TRC</text>
+  <text x="90" y="250" fill="#ffffff" font-family="Arial, sans-serif" font-size="68" font-weight="700">Galeria tecnica</text>
+  <text x="90" y="312" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Placeholder editable para fotografia real del proyecto</text>
+  <circle cx="980" cy="190" r="96" fill="#10b981" opacity=".9"/>
+  <path d="M790 430l75-150h87l-74 150zm129 0l74-150h88l-75 150zm-257 0l75-150h88l-75 150z" fill="#facc15"/>
+</svg>

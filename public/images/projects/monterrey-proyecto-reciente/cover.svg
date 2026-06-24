@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0f172a"/>
+  <path d="M0 620c170-140 350-210 520-210 220 0 410 90 680 220V800H0z" fill="#162947"/>
+  <circle cx="985" cy="160" r="88" fill="#facc15"/>
+  <rect x="88" y="112" width="280" height="40" rx="20" fill="#10b981"/>
+  <text x="88" y="240" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700">Monterrey</text>
+  <text x="88" y="312" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Proyecto solar reciente en Nuevo Leon</text>
+  <text x="88" y="374" fill="#94a3b8" font-family="Arial, sans-serif" font-size="26">Caso destacado para cobertura regional activa</text>
+  <path d="M705 470l90-182h100l-90 182zm140 0l90-182h100l-90 182zm140 0l90-182h78v182z" fill="#facc15"/>
+</svg>
