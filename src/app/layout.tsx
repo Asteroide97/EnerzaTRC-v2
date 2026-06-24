@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { StickyMobileCTA } from "@/components/layout/sticky-mobile-cta";
@@ -9,14 +9,11 @@ import { WhatsAppFloatingButton } from "@/components/common/whatsapp-floating-bu
 import { businessConfig } from "@/config/business";
 import "@/app/globals.css";
 
-const headingFont = Space_Grotesk({
+const mainFont = Poppins({
   subsets: ["latin"],
-  variable: "--font-heading",
-});
-
-const bodyFont = Manrope({
-  subsets: ["latin"],
-  variable: "--font-body",
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +53,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#143c6b",
+  themeColor: "#0B172A",
 };
 
 export default function RootLayout({
@@ -66,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-MX">
-      <body className={`${headingFont.variable} ${bodyFont.variable} min-h-screen`}>
+      <body className={`${mainFont.variable} min-h-screen`}>
         <LocalBusinessSchema />
         <Header />
         <main className="pb-24 md:pb-0">{children}</main>

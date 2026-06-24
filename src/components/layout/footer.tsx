@@ -8,8 +8,8 @@ import { getWhatsAppHref } from "@/lib/contact";
 export function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="h-px bg-primary" />
-      <Container className="grid gap-12 py-14 lg:grid-cols-[1.5fr_1fr_1fr] lg:py-16">
+      <div className="h-px bg-primary/80" />
+      <Container className="grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr] lg:py-14">
         <div className="space-y-6">
           <SiteLogo inverted />
           <p className="max-w-xl text-sm leading-7 text-slate-300">
@@ -24,16 +24,20 @@ export function Footer() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <CTAButton href="/cotizar" variant="default" showArrow>
-              Cotizar
-            </CTAButton>
             <CTAButton
               href={getWhatsAppHref()}
               external
-              variant="outline"
-              className="border-white/18 text-white hover:bg-white/5"
+              className="justify-between"
             >
               WhatsApp
+            </CTAButton>
+            <CTAButton
+              href="/cotizar"
+              variant="outline"
+              className="border-white/18 bg-transparent text-white hover:bg-white/10"
+              showArrow
+            >
+              Cotizar
             </CTAButton>
           </div>
         </div>

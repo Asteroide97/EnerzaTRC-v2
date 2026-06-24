@@ -13,9 +13,9 @@ export function SiteLogo({ inverted = false }: SiteLogoProps) {
         <Image
           src="/images/brand/enerza-logo-oficial-transparente.png"
           alt="Enerza TRC"
-          width={180}
-          height={72}
-          className="h-auto max-h-16 w-auto"
+          width={164}
+          height={66}
+          className="h-auto max-h-14 w-auto"
           priority
         />
       </Link>
@@ -34,12 +34,12 @@ export function SiteLogo({ inverted = false }: SiteLogoProps) {
       <span className="flex flex-col">
         <span
           className={cn(
-            "font-heading text-[1.55rem] font-semibold leading-none tracking-tight text-secondary",
+            "font-heading text-[1.42rem] font-bold leading-none tracking-tight text-accent sm:text-[1.52rem]",
           )}
         >
           Enerza
         </span>
-        <span className="field-label text-accent">Sistemas solares</span>
+        <span className="field-label hidden text-primary sm:block">Sistemas solares</span>
       </span>
     </Link>
   );

@@ -59,8 +59,8 @@ const config: Config = {
         "8xl": "90rem",
       },
       fontFamily: {
-        heading: ["var(--font-heading)"],
-        body: ["var(--font-body)"],
+        heading: ["var(--font-poppins)"],
+        body: ["var(--font-poppins)"],
       },
     },
   },

@@ -6,6 +6,7 @@ import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { Hero } from "@/components/sections/hero";
 import { benefitsPreviewItems } from "@/data/site-content";
 import { featuredProjects } from "@/data/projects";
+import { getWhatsAppHref } from "@/lib/contact";
 
 export const metadata = createMetadata({
   title: "Ahorra en tu recibo de luz con paneles solares instalados por expertos",
@@ -28,26 +29,25 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <Container className="space-y-12 py-12 lg:space-y-14 lg:py-16">
+      <Container className="space-y-10 py-10 lg:space-y-12 lg:py-14">
         <section className="space-y-6">
           <SectionHeading
             eyebrow="Beneficios"
             title="Tres razones para revisar tu proyecto solar"
-            description="Ahorro, acompanamiento tecnico y monitoreo claro."
+            description="Ahorro, instalacion profesional y acompanamiento claro desde la cotizacion."
           />
           <div className="grid gap-5 md:grid-cols-3">
             {benefitsPreviewItems.map((benefit, index) => (
               <article
                 key={benefit.id}
-                className="rounded-[24px] border border-foreground/10 bg-card p-6"
+                className="rounded-[28px] border border-border bg-card p-6 shadow-sm"
               >
-                <div className="flex items-center justify-between gap-4 border-b border-foreground/10 pb-4">
-                  <span className="font-heading text-4xl font-semibold text-foreground/25">
+                <div className="flex items-center gap-4">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 font-heading text-lg font-bold text-primary">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="field-label text-primary">Beneficio</span>
                 </div>
-                <div className="mt-4 space-y-3">
+                <div className="mt-5 space-y-3">
                   <h2 className="font-heading text-2xl font-semibold tracking-tight">
                     {benefit.title}
                   </h2>
@@ -64,17 +64,17 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Proyectos destacados"
             title="Casos reales en Monterrey, La Laguna y Coahuila"
-            description="El proyecto reciente de Monterrey aparece primero como referencia de servicio activo."
+            description="Tres instalaciones reales para reforzar confianza antes de cotizar."
           />
           <ProjectCarousel projects={featuredProjects} />
         </section>
 
-        <section className="rounded-[28px] border border-foreground/12 bg-primary/8 p-8">
+        <section className="rounded-[32px] bg-secondary p-8 text-secondary-foreground lg:p-10">
           <p className="field-label text-primary">Cotizacion</p>
-          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight">
+          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight text-white">
             Comparte tu recibo CFE, tu ciudad y el servicio que necesitas.
           </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
             Revisamos tu solicitud para orientarte sobre instalacion,
             mantenimiento o tramite CFE segun el consumo real del proyecto.
           </p>
@@ -82,8 +82,13 @@ export default function HomePage() {
             <CTAButton href="/cotizar" showArrow>
               Cotizar tu proyecto
             </CTAButton>
-            <CTAButton href="/contacto" variant="outline">
-              Contacto
+            <CTAButton
+              href={getWhatsAppHref()}
+              external
+              variant="outline"
+              className="border-white/18 bg-transparent text-white hover:bg-white/10"
+            >
+              WhatsApp
             </CTAButton>
           </div>
         </section>

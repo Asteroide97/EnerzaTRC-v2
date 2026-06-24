@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 210 38% 98%;
-    --foreground: 214 51% 18%;
+    --background: 210 40% 98%;
+    --foreground: 217 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 214 51% 18%;
-    --border: 212 30% 79%;
-    --input: 210 28% 92%;
-    --ring: 132 46% 49%;
-    --primary: 208 64% 45%;
+    --card-foreground: 217 47% 11%;
+    --border: 214 32% 90%;
+    --input: 214 30% 93%;
+    --ring: 160 84% 39%;
+    --primary: 160 84% 39%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 212 66% 20%;
-    --secondary-foreground: 210 45% 98%;
-    --muted: 210 28% 94%;
-    --muted-foreground: 214 20% 40%;
-    --accent: 112 42% 50%;
-    --accent-foreground: 214 51% 18%;
-    --success: 112 42% 50%;
-    --success-foreground: 214 51% 18%;
-    --graph-1: 208 64% 45%;
-    --graph-2: 112 42% 50%;
-    --graph-3: 212 66% 20%;
-    --graph-4: 205 44% 66%;
+    --secondary: 218 59% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 33% 96%;
+    --muted-foreground: 216 18% 43%;
+    --accent: 213 58% 34%;
+    --accent-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --graph-1: 213 58% 34%;
+    --graph-2: 160 84% 39%;
+    --graph-3: 218 59% 10%;
+    --graph-4: 210 34% 68%;
   }
 
   * {
@@ -38,8 +38,8 @@
   body {
     @apply bg-background font-body text-foreground antialiased;
     background-image:
-      radial-gradient(circle at top right, rgba(42, 116, 187, 0.12), transparent 26%),
-      radial-gradient(circle at bottom left, rgba(88, 180, 74, 0.09), transparent 24%);
+      radial-gradient(circle at top right, rgba(11, 23, 42, 0.05), transparent 24%),
+      radial-gradient(circle at left top, rgba(16, 185, 129, 0.08), transparent 22%);
   }
 
   a,
@@ -61,25 +61,24 @@
   }
 
   .cut-corner {
-    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
   }
 
   .technical-grid {
     background-image:
-      linear-gradient(to right, rgba(20, 60, 107, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(20, 60, 107, 0.06) 1px, transparent 1px);
-    background-size: 36px 36px;
+      linear-gradient(to right, rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 
   .field-label {
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    font-size: 0.78rem;
     font-weight: 700;
   }
 
   .section-rule {
-    border-top: 1px solid rgba(20, 60, 107, 0.16);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .spec-table {
@@ -101,9 +100,8 @@
   }
 
   .spec-table dt {
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    font-size: 0.75rem;
     color: rgba(226, 232, 240, 0.78);
   }
 
@@ -113,8 +111,9 @@
   }
 
   .project-plate {
-    border: 1px solid rgba(20, 60, 107, 0.12);
-    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 20px 40px -32px rgba(15, 23, 42, 0.42);
   }
 
   .diagonal-band {
@@ -127,8 +126,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(128deg, rgba(42, 116, 187, 0.14) 0 20%, transparent 20% 100%),
-      linear-gradient(180deg, rgba(88, 180, 74, 0.08), rgba(20, 60, 107, 0.04));
+      linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0 18%, transparent 18% 100%),
+      linear-gradient(180deg, rgba(11, 23, 42, 0.04), rgba(11, 23, 42, 0.01));
     pointer-events: none;
   }
 }

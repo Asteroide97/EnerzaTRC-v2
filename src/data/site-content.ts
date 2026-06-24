@@ -11,6 +11,10 @@ export const navLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+export const headerLinks = navLinks.filter((link) =>
+  ["/", "/beneficios", "/servicios", "/proyectos", "/contacto"].includes(link.href),
+);
+
 export const operationsStrip = [
   "Instalación profesional",
   "Trámite CFE e interconexión",
