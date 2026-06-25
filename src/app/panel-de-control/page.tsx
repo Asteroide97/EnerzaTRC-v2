@@ -4,13 +4,36 @@ import { CTAButton } from "@/components/common/cta-button";
 import { SectionHeading } from "@/components/common/section-heading";
 import { PageHero } from "@/components/pages/page-hero";
 import { PanelDashboardPreview } from "@/components/panel-control/panel-dashboard-preview";
-import { verifiedCurrentSiteContent } from "@/data/site-content";
 import { getWhatsAppHref } from "@/lib/contact";
+
+const panelBenefits = [
+  {
+    index: "01",
+    title: "Generacion visible",
+    description: "Consulta produccion por dia, semana o mes.",
+  },
+  {
+    index: "02",
+    title: "Ahorro estimado",
+    description:
+      "Revisa una referencia de ahorro con base en la lectura del sistema.",
+  },
+  {
+    index: "03",
+    title: "Estado del sistema",
+    description: "Identifica si el sistema esta operando correctamente.",
+  },
+  {
+    index: "04",
+    title: "Acceso desde celular",
+    description: "Consulta la informacion desde computadora o celular.",
+  },
+] as const;
 
 export const metadata = createMetadata({
   title: "Panel de control solar | Monitorea tu ahorro",
   description:
-    "Monitorea la producción de energía, el ahorro estimado y el estado de tu sistema solar con el panel de control de Enerza TRC.",
+    "Monitorea la produccion de energia, el ahorro estimado y el estado de tu sistema solar con el panel de control de Enerza TRC.",
   path: "/panel-de-control",
   keywords: [
     "panel de control solar",
@@ -24,8 +47,8 @@ export default function PanelDeControlPublicPage() {
     <>
       <PageHero
         eyebrow="Monitoreo"
-        title={verifiedCurrentSiteContent.monitoring.title}
-        description="Enerza TRC presenta el panel de control como una vista clara para seguir producción de energía, ahorro estimado y estado general del sistema."
+        title="Monitorea tu sistema desde un panel de control"
+        description="Consulta la generacion de energia, ahorro estimado y estado general de tu sistema desde una vista clara para el cliente."
         actions={
           <>
             <CTAButton href="/cotizar" showArrow>
@@ -37,50 +60,53 @@ export default function PanelDeControlPublicPage() {
           </>
         }
       />
-      <Container className="space-y-14 py-14 lg:space-y-16 lg:py-16">
-        <section className="space-y-6">
+
+      <Container className="space-y-10 py-10 lg:space-y-12 lg:py-12">
+        <section className="space-y-5">
           <SectionHeading
-            eyebrow="Vista del cliente"
-            title="Un panel pensado para entender el sistema con rapidez"
-            description="La vista principal muestra lo más importante: hoy, este mes, ahorro, estado del sistema y generación histórica."
+            eyebrow="Panel de control"
+            title="Una vista simple para seguir generacion, ahorro y monitoreo"
+            description="La lectura principal concentra lo mas importante del sistema en una sola pantalla para el cliente."
           />
           <PanelDashboardPreview />
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[0.84fr_1.16fr]">
+        <section className="space-y-5">
           <SectionHeading
-            eyebrow="Monitoreo"
-            title="Lo importante es la lectura del sistema"
-            description={verifiedCurrentSiteContent.monitoring.description}
+            eyebrow="Beneficios"
+            title="Lo importante del monitoreo, sin saturar la vista"
+            description="El panel ayuda a revisar solo la informacion que realmente sirve para entender el comportamiento general del sistema."
           />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {verifiedCurrentSiteContent.monitoring.points.map((item, index) => (
-              <article key={item} className="project-plate cut-corner p-6">
-                <p className="field-label text-primary">
-                  {String(index + 1).padStart(2, "0")}
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {panelBenefits.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[24px] border border-border bg-card p-6 shadow-sm"
+              >
+                <p className="field-label text-primary">{item.index}</p>
+                <h2 className="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground">
+                  {item.title}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  {item.description}
                 </p>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{item}</p>
               </article>
             ))}
-            <article className="project-plate cut-corner p-6">
-              <p className="field-label text-primary">06</p>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Alertas del sistema para detectar cuando el comportamiento cambia y
-                conviene revisar el proyecto.
-              </p>
-            </article>
           </div>
         </section>
 
-        <section className="rounded-[28px] border border-border bg-muted/50 p-8">
+        <section className="rounded-[28px] border border-border bg-muted/50 p-7 lg:p-8">
           <p className="field-label text-primary">Siguiente paso</p>
-          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight">
-            Si quieres una propuesta con instalación, CFE y monitoreo, continúa con
-            la cotización.
+          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight text-foreground">
+            Quieres un sistema solar con monitoreo?
           </h2>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
+            Solicita una cotizacion y revisamos tu consumo, tipo de inmueble y
+            servicio requerido.
+          </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <CTAButton href="/cotizar" showArrow>
-              Ir a cotizar
+              Cotizar proyecto
             </CTAButton>
             <CTAButton href={getWhatsAppHref()} external variant="outline">
               WhatsApp
