@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Search, Wrench } from "lucide-react";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/common/container";
 import { CTAButton } from "@/components/common/cta-button";
@@ -9,68 +9,44 @@ import { PageHero } from "@/components/pages/page-hero";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { getFaqJsonLd } from "@/lib/json-ld";
-import { verifiedCurrentSiteContent } from "@/data/site-content";
 
 type ServiceIndexItem = {
   index: string;
   title: string;
   audience: string;
-  includes: string;
+  solution: string;
   href: string;
   cta: string;
-  extraLinks?: Array<{
-    href: string;
-    label: string;
-  }>;
 };
-
-export const metadata = createMetadata({
-  title: "Servicios solares para hogares, negocios e industria",
-  description:
-    "Enerza TRC disena, instala, mantiene y acompana sistemas solares con enfoque tecnico, tramite CFE y soporte postventa en La Laguna, Monterrey y el norte de Mexico.",
-  path: "/servicios",
-  keywords: [
-    "instalacion de paneles solares",
-    "mantenimiento de paneles solares",
-    "tramite CFE paneles solares",
-    "paneles solares Monterrey",
-    "paneles solares La Laguna",
-    "bombeo solar",
-  ],
-});
 
 const servicesIndex: ServiceIndexItem[] = [
   {
     index: "01",
-    title: "Instalacion de paneles solares",
+    title: "Instalaci\u00f3n de paneles solares",
     audience:
-      "Hogares e inmuebles con consumo constante que buscan una instalacion nueva con lectura real de consumo.",
-    includes:
-      "Revision de consumo, dimensionamiento inicial, planteamiento tecnico del sistema e instalacion profesional.",
+      "Hogares o inmuebles que buscan una instalaci\u00f3n nueva con lectura real de consumo.",
+    solution:
+      "Revisi\u00f3n de consumo, dimensionamiento inicial, instalaci\u00f3n profesional y acompa\u00f1amiento t\u00e9cnico.",
     href: "/paneles-solares-residenciales",
     cta: "Conocer servicio",
-    extraLinks: [
-      { href: "/paneles-solares-comerciales", label: "Comercial" },
-      { href: "/paneles-solares-industriales", label: "Industrial" },
-    ],
   },
   {
     index: "02",
     title: "Mantenimiento de sistemas solares",
     audience:
-      "Usuarios con sistemas instalados, operaciones con baja aparente de rendimiento o inmuebles que necesitan revision periodica.",
-    includes:
-      "Limpieza, revision visual, diagnostico, revision de inversores y tableros, y propuesta preventiva o correctiva.",
+      "Sistemas ya instalados que requieren limpieza, revisi\u00f3n o diagn\u00f3stico.",
+    solution:
+      "Limpieza, revisi\u00f3n de componentes, diagn\u00f3stico y seguimiento preventivo o correctivo.",
     href: "/mantenimiento-paneles-solares",
     cta: "Conocer servicio",
   },
   {
     index: "03",
-    title: "Tramite CFE e interconexion",
+    title: "Tr\u00e1mite CFE e interconexi\u00f3n",
     audience:
-      "Clientes que necesitan ordenar documentacion, interconexion o seguimiento tecnico del proceso con CFE.",
-    includes:
-      "Acompanamiento documental, integracion de informacion del proyecto y seguimiento del proceso.",
+      "Clientes que necesitan ordenar documentaci\u00f3n y avanzar con la interconexi\u00f3n.",
+    solution:
+      "Integraci\u00f3n documental, revisi\u00f3n t\u00e9cnica y seguimiento del proceso con CFE.",
     href: "/tramites-cfe-paneles-solares",
     cta: "Conocer servicio",
   },
@@ -78,57 +54,89 @@ const servicesIndex: ServiceIndexItem[] = [
     index: "04",
     title: "Sistemas comerciales e industriales",
     audience:
-      "Negocios, locales, oficinas, naves y operaciones con consumo energetico mas amplio.",
-    includes:
-      "Revision de carga, propuesta tecnica segun operacion y planeacion de instalacion.",
+      "Negocios, oficinas, naves y operaciones con consumo energ\u00e9tico m\u00e1s amplio.",
+    solution:
+      "Revisi\u00f3n de carga, planteamiento t\u00e9cnico del sistema y planeaci\u00f3n de instalaci\u00f3n.",
     href: "/paneles-solares-comerciales",
     cta: "Conocer servicio",
-    extraLinks: [{ href: "/paneles-solares-industriales", label: "Industrial" }],
   },
   {
     index: "05",
     title: "Bombeo solar",
     audience:
-      "Ranchos, pozos, agricultura y operaciones rurales que requieren energia util para su funcionamiento.",
-    includes:
-      "Diagnostico del punto de trabajo, evaluacion de demanda y planteamiento de solucion solar para bombeo.",
+      "Ranchos, pozos y operaci\u00f3n agr\u00edcola que requieren energ\u00eda \u00fatil para bombeo.",
+    solution:
+      "Diagn\u00f3stico del punto de trabajo, demanda estimada y propuesta solar para operaci\u00f3n rural.",
     href: "/bombeo-solar",
     cta: "Conocer servicio",
   },
-];
+] as const;
+
+const serviceOverview = [
+  {
+    title: "Instalamos",
+    description:
+      "Sistemas solares nuevos para hogares, negocios e industria.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Revisamos",
+    description:
+      "Diagn\u00f3stico de rendimiento, condiciones del sitio y consumo.",
+    icon: Search,
+  },
+  {
+    title: "Mantenemos",
+    description: "Limpieza, revisi\u00f3n y seguimiento posterior.",
+    icon: Wrench,
+  },
+] as const;
+
+const serviceProcess = [
+  { index: "01", title: "Revisi\u00f3n del recibo CFE" },
+  { index: "02", title: "Diagn\u00f3stico del sitio" },
+  { index: "03", title: "Dise\u00f1o del sistema" },
+  { index: "04", title: "Instalaci\u00f3n y pruebas" },
+  { index: "05", title: "Puesta en marcha y seguimiento" },
+] as const;
 
 const servicesFaqs = [
   {
-    question: "Instalan fuera de Torreon?",
+    question: "\u00bfInstalan fuera de Torre\u00f3n?",
     answer:
-      "Si. Torreon y La Laguna son zonas principales, pero Enerza TRC tambien atiende Monterrey, Nuevo Leon y proyectos regionales en el norte de Mexico segun el caso.",
+      "S\u00ed. Torre\u00f3n y La Laguna son zonas principales, pero Enerza tambi\u00e9n atiende Monterrey, Nuevo Le\u00f3n y proyectos regionales en el norte de M\u00e9xico seg\u00fan el caso.",
   },
   {
-    question: "Trabajan en Monterrey?",
+    question: "\u00bfTrabajan en Monterrey?",
     answer:
-      "Si. Enerza TRC atiende proyectos en Monterrey y Nuevo Leon, ademas de sus zonas principales en La Laguna.",
+      "S\u00ed. Enerza atiende proyectos en Monterrey y Nuevo Le\u00f3n, adem\u00e1s de sus zonas principales en La Laguna.",
   },
   {
-    question: "Pueden revisar un sistema que no instalaron?",
+    question: "\u00bfPueden revisar un sistema que no instalaron?",
     answer:
-      "Si. Enerza TRC puede revisar instalaciones existentes, diagnosticar fallas y proponer mantenimiento preventivo o correctivo aunque el sistema lo haya instalado otro proveedor.",
+      "S\u00ed. Enerza puede revisar instalaciones existentes, diagnosticar fallas y proponer mantenimiento preventivo o correctivo aunque el sistema lo haya instalado otro proveedor.",
   },
   {
-    question: "Ayudan con el tramite CFE?",
+    question: "\u00bfQu\u00e9 necesito para cotizar?",
     answer:
-      "Si. El acompanamiento contempla la parte documental y tecnica para que el proceso de interconexion avance con claridad.",
+      "Lo ideal es contar con tu recibo CFE m\u00e1s reciente, ciudad, tipo de inmueble y una idea general del servicio que necesitas.",
   },
-  {
-    question: "Que necesito para cotizar?",
-    answer:
-      "Lo ideal es contar con tu recibo CFE mas reciente, ciudad, tipo de inmueble y una idea general del servicio que necesitas.",
-  },
-  {
-    question: "Atienden proyectos comerciales o industriales?",
-    answer:
-      "Si. Enerza TRC atiende hogares, negocios, industria y operacion agricola con enfoque tecnico y cobertura regional.",
-  },
-];
+] as const;
+
+export const metadata = createMetadata({
+  title: "Servicios solares para hogares, negocios e industria",
+  description:
+    "Enerza dise\u00f1a, instala, mantiene y acompa\u00f1a sistemas solares con tr\u00e1mite CFE y soporte posterior en La Laguna, Monterrey y el norte de M\u00e9xico.",
+  path: "/servicios",
+  keywords: [
+    "instalaci\u00f3n de paneles solares",
+    "mantenimiento de paneles solares",
+    "tr\u00e1mite CFE paneles solares",
+    "paneles solares Monterrey",
+    "paneles solares La Laguna",
+    "bombeo solar",
+  ],
+});
 
 export default function ServiciosPage() {
   return (
@@ -137,11 +145,11 @@ export default function ServiciosPage() {
       <PageHero
         eyebrow="Servicios"
         title="Servicios solares para hogares, negocios e industria"
-        description="Enerza TRC disena, instala, mantiene y acompana sistemas solares con enfoque tecnico, tramite CFE y soporte postventa en La Laguna, Monterrey y el norte de Mexico."
+        description="Enerza dise\u00f1a, instala, mantiene y acompa\u00f1a sistemas solares con tr\u00e1mite CFE y soporte posterior en La Laguna, Monterrey y el norte de M\u00e9xico."
         actions={
           <>
             <CTAButton href="/cotizar" showArrow>
-              Solicitar diagnostico
+              {"Solicitar diagn\u00f3stico"}
             </CTAButton>
             <CTAButton href="/proyectos" variant="outline">
               Ver proyectos
@@ -149,119 +157,121 @@ export default function ServiciosPage() {
           </>
         }
       />
-      <Container className="space-y-16 py-16 lg:py-20">
-        <section className="space-y-8">
+
+      <Container className="space-y-12 py-12 lg:space-y-14 lg:py-14">
+        <section className="grid gap-4 md:grid-cols-3">
+          {serviceOverview.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <article
+                key={item.title}
+                className="rounded-[24px] border border-border bg-card p-5 shadow-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="rounded-full bg-primary/12 p-2 text-primary">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <h2 className="font-heading text-xl font-semibold tracking-tight text-foreground">
+                    {item.title}
+                  </h2>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  {item.description}
+                </p>
+              </article>
+            );
+          })}
+        </section>
+
+        <section className="space-y-6">
           <SectionHeading
             eyebrow="Servicios"
-            title="Identifica rapido el servicio que aplica a tu proyecto"
-            description="Cada opcion te ayuda a avanzar con mas claridad hacia tu cotizacion."
+            title="Encuentra el servicio solar que necesitas"
+            description="Elige si buscas instalar, revisar, mantener o gestionar tu interconexi\u00f3n con CFE."
           />
-          <div className="grid gap-2">
+          <div className="grid gap-4">
             {servicesIndex.map((service) => (
               <article
                 key={service.index}
-                className="section-rule grid gap-5 py-6 xl:grid-cols-[90px_250px_1fr_1fr_210px]"
+                className="rounded-[28px] border border-border bg-card p-5 shadow-sm lg:p-6"
               >
-                <div className="font-heading text-4xl font-semibold text-foreground/30">
-                  {service.index}
-                </div>
+                <div className="grid gap-5 lg:grid-cols-[72px_1.1fr_1fr_1fr_auto] lg:items-start">
+                  <div className="font-heading text-4xl font-semibold text-foreground/28">
+                    {service.index}
+                  </div>
 
-                <div className="space-y-3">
-                  <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
-                    {service.title}
-                  </h2>
-                  <p className="field-label text-muted-foreground">Servicio solar</p>
-                </div>
+                  <div className="space-y-2">
+                    <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
+                      {service.title}
+                    </h2>
+                  </div>
 
-                <div className="space-y-3">
-                  <p className="field-label text-muted-foreground">Para quien aplica</p>
-                  <p className="text-sm leading-7 text-muted-foreground">
-                    {service.audience}
-                  </p>
-                </div>
+                  <div className="space-y-2">
+                    <p className="field-label text-muted-foreground">
+                      {"Para qui\u00e9n es"}
+                    </p>
+                    <p className="text-sm leading-6 text-muted-foreground">
+                      {service.audience}
+                    </p>
+                  </div>
 
-                <div className="space-y-3">
-                  <p className="field-label text-muted-foreground">Que incluye</p>
-                  <p className="text-sm leading-7 text-muted-foreground">
-                    {service.includes}
-                  </p>
-                </div>
+                  <div className="space-y-2">
+                    <p className="field-label text-muted-foreground">
+                      {"Qu\u00e9 resolvemos"}
+                    </p>
+                    <p className="text-sm leading-6 text-muted-foreground">
+                      {service.solution}
+                    </p>
+                  </div>
 
-                <div className="flex flex-col items-start gap-4 xl:items-end">
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-primary transition hover:gap-3"
-                  >
-                    {service.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  {service.extraLinks?.length ? (
-                    <div className="flex flex-wrap gap-3 xl:justify-end">
-                      {service.extraLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="field-label text-muted-foreground transition hover:text-foreground"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
+                  <div className="flex items-start lg:justify-end">
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-primary transition hover:gap-3"
+                    >
+                      {service.cta}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="space-y-8">
+        <section className="space-y-6">
           <SectionHeading
-            eyebrow="Instalacion profesional"
-            title={verifiedCurrentSiteContent.installationQuality.title}
-            description={verifiedCurrentSiteContent.installationQuality.description}
+            eyebrow="Proceso"
+            title={"C\u00f3mo trabajamos tu proyecto"}
+            description="Cada sistema se revisa antes, durante y despu\u00e9s de la instalaci\u00f3n."
           />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {verifiedCurrentSiteContent.installationQuality.points.map((item, index) => (
-              <article key={item} className="project-plate cut-corner p-6">
-                <p className="field-label text-primary">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{item}</p>
-              </article>
-            ))}
-          </div>
+          <ProcessTimeline items={serviceProcess} />
+          <p className="text-sm leading-7 text-muted-foreground">
+            {"Tambi\u00e9n podemos revisar sistemas ya instalados para mantenimiento o diagn\u00f3stico."}
+          </p>
         </section>
 
-        <section className="space-y-8">
-          <SectionHeading
-            eyebrow="Como trabajamos"
-            title="De la revision de consumo al seguimiento posterior"
-            description="Cada etapa del proyecto se revisa con enfoque tecnico antes de instalar."
-          />
-          <ProcessTimeline detailed />
-        </section>
-
-        <section className="space-y-8">
+        <section className="space-y-6">
           <SectionHeading
             eyebrow="Preguntas frecuentes"
-            title="Dudas habituales antes de solicitar diagnostico"
-            description="Cobertura, Monterrey, mantenimiento, CFE y tipos de proyecto en una lectura rapida."
+            title={"Dudas habituales antes de solicitar diagn\u00f3stico"}
+            description="Cobertura, Monterrey, revisi\u00f3n de sistemas existentes y requisitos para cotizar en una lectura r\u00e1pida."
           />
           <FAQAccordion items={servicesFaqs} />
         </section>
 
-        <section className="cut-corner border border-foreground/12 bg-primary/10 p-8">
-          <p className="field-label text-primary">Cotizacion</p>
-          <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight">
-            Si ya identificaste el servicio, solicita tu diagnostico.
+        <section className="rounded-[28px] border border-border bg-primary/10 p-7 lg:p-8">
+          <p className="field-label text-primary">{"Cotizaci\u00f3n"}</p>
+          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-tight text-foreground">
+            {"\u00bfListo para revisar tu proyecto solar?"}
           </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
-            Comparte ciudad, tipo de inmueble, recibo CFE aproximado y el objetivo
-            del proyecto para orientar la propuesta inicial.
+          <p className="mt-3 max-w-3xl text-base leading-7 text-muted-foreground">
+            {"Comp\u00e1rtenos tu ciudad, tipo de inmueble y recibo CFE aproximado. Te orientamos por WhatsApp."}
           </p>
           <div className="mt-6">
             <CTAButton href="/cotizar" showArrow>
-              Solicitar diagnostico
+              Cotizar por WhatsApp
             </CTAButton>
           </div>
         </section>
