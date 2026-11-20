@@ -16,8 +16,8 @@ export function ProjectCaseStudy({
   relatedProjects,
 }: ProjectCaseStudyProps) {
   const technicalRows = [
-    { label: "Ubicacion", value: project.location },
-    { label: "Tipo de cliente", value: customerTypeLabels[project.clientType] },
+    { label: "Ubicación", value: project.location },
+    project.clientType && { label: "Tipo de cliente", value: customerTypeLabels[project.clientType] },
     { label: "Servicio", value: project.serviceType },
     project.panelCount ? { label: "Paneles", value: `${project.panelCount}` } : null,
   ].filter(Boolean) as { label: string; value: string }[];
@@ -39,7 +39,7 @@ export function ProjectCaseStudy({
             {project.title}
           </h1>
           <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
-            {project.location} · {customerTypeLabels[project.clientType]} · {project.serviceType}
+            {[project.location, project.clientType && customerTypeLabels[project.clientType], project.serviceType].filter(Boolean).join(" · ")}
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export function ProjectCaseStudy({
           <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] border border-border bg-card">
             <Image
               src={project.coverImage}
-              alt={`${project.title} en ${project.location}`}
+              alt={project.gallery[0]?.alt || project.title}
               fill
               className="object-cover"
               sizes="(max-width: 1280px) 100vw, 64vw"
@@ -72,7 +72,7 @@ export function ProjectCaseStudy({
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-3">
+      {(project.challenge || project.solution || project.results) && <section className="grid gap-6 lg:grid-cols-3">
         <article className="project-plate cut-corner p-6">
           <p className="field-label text-primary">Reto</p>
           <p className="mt-3 text-base leading-7 text-muted-foreground">{project.challenge}</p>
@@ -85,12 +85,12 @@ export function ProjectCaseStudy({
           <p className="field-label text-primary">Resultado</p>
           <p className="mt-3 text-base leading-7 text-muted-foreground">{project.results}</p>
         </article>
-      </section>
+      </section>}
 
-      {project.gallery.length > 1 ? (
+      {project.gallery.length > 0 ? (
         <section className="space-y-5">
-          <p className="field-label text-primary">Galeria</p>
-          <ProjectGallery images={project.gallery} title={project.title} />
+          <p className="field-label text-primary">Galería</p>
+          <ProjectGallery images={project.gallery} />
         </section>
       ) : null}
 

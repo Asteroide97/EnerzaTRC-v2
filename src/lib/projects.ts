@@ -1,6 +1,6 @@
 import type { Project } from "@/types";
 
-export const customerTypeLabels: Record<Project["clientType"], string> = {
+export const customerTypeLabels: Record<NonNullable<Project["clientType"]>, string> = {
   residencial: "Residencial",
   comercial: "Comercial",
   industrial: "Industrial",

@@ -10,7 +10,7 @@ import { getWhatsAppHref } from "@/lib/contact";
 export const metadata = createMetadata({
   title: "Proyectos solares",
   description:
-    "Portafolio de Enerza TRC con tres proyectos: Monterrey, Real del Nogalar y Ampliacion Senderos.",
+    "Conoce las instalaciones solares de Enerza en Monterrey, Real del Nogalar, Ampliación Senderos y la colonia Ampliación Los Ángeles de Torreón.",
   path: "/proyectos",
   keywords: [
     "proyectos solares Monterrey",
@@ -26,7 +26,7 @@ export default function ProyectosPage() {
       <PageHero
         eyebrow="Proyectos"
         title="Proyectos solares en Monterrey, La Laguna y Coahuila"
-        description="Cada caso funciona como prueba de confianza. El proyecto reciente de Monterrey aparece primero, seguido por Real del Nogalar y Ampliacion Senderos."
+        description="Explora nuestras instalaciones de sistemas fotovoltaicos en Nuevo León y Coahuila."
         actions={
           <>
             <CTAButton href="/cotizar" showArrow>
@@ -42,8 +42,7 @@ export default function ProyectosPage() {
         <section className="space-y-6">
           <SectionHeading
             eyebrow="Casos reales"
-            title="Tres proyectos destacados"
-            description="Monterrey aparece primero, seguido por Real del Nogalar y Ampliacion Senderos."
+            title="Proyectos destacados"
           />
           <ProjectCarousel projects={projects} />
         </section>

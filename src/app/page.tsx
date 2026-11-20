@@ -64,7 +64,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Proyectos destacados"
             title="Casos reales en Monterrey, La Laguna y Coahuila"
-            description="Tres instalaciones reales para reforzar confianza antes de cotizar."
+            description="Conoce las instalaciones solares de Enerza en Nuevo León y Coahuila."
           />
           <ProjectCarousel projects={featuredProjects} />
         </section>

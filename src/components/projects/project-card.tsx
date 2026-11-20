@@ -11,7 +11,7 @@ type ProjectCardProps = {
 
 function getProjectLocationLabel(project: Project) {
   const locality = [project.city, project.state].filter(Boolean).join(", ");
-  return locality || project.location || "Ubicacion por confirmar";
+  return project.location || locality || "Ubicación por confirmar";
 }
 
 function getProjectBadges(project: Project) {
@@ -41,7 +41,7 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
       >
         <Image
           src={project.coverImage}
-          alt={`${project.title} en ${getProjectLocationLabel(project)}`}
+          alt={project.gallery[0]?.alt || project.title}
           fill
           className="object-cover"
           sizes={
@@ -87,7 +87,7 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
           </div>
         ) : null}
 
-        <p className="text-sm leading-7 text-muted-foreground">{project.results}</p>
+        {project.results && <p className="text-sm leading-7 text-muted-foreground">{project.results}</p>}
 
         <Link
           href={`/proyectos/${project.slug}`}

@@ -1,5 +1,3 @@
-"use client";
-
 import type { Project } from "@/types";
 import { sortProjectsForShowcase } from "@/lib/projects";
 import { ProjectCard } from "@/components/projects/project-card";
@@ -23,22 +21,17 @@ export function ProjectCarousel({ projects, note }: ProjectCarouselProps) {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-2 border-b border-border pb-4 sm:flex-row sm:items-end sm:justify-between">
-        <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-          {note ||
-            "Monterrey aparece primero como referencia de servicio activo, seguido por dos casos reales en Coahuila."}
-        </p>
+        {note && <p className="text-muted-foreground">{note}</p>}
         <span className="text-sm text-muted-foreground">{sortedProjects.length} proyectos</span>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {sortedProjects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            variant={index === 0 ? "featured" : "default"}
-          />
+      <ul aria-label="Proyectos solares" tabIndex={0} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 focus-visible:outline-primary">
+        {sortedProjects.map((project) => (
+          <li key={project.id} className="w-[86%] flex-none snap-start sm:w-[46%] lg:w-[32%]">
+            <ProjectCard project={project} />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
