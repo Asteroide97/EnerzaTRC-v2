@@ -9,6 +9,9 @@ export type Project = {
   id: string;
   slug: string;
   title: string;
+  heading?: string;
+  introduction?: string;
+  seo?: { title: string; description: string; canonical: string };
   location: string;
   state: string;
   city: string;
@@ -16,6 +19,7 @@ export type Project = {
   serviceType: string;
   capacityKwp?: number;
   panelCount?: number;
+  panelWatts?: number;
   inverter?: string;
   installationTime?: string;
   estimatedSavings?: string;

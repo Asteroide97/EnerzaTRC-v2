@@ -85,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: routePriorityMap[route],
     })),
     ...projects.map((project) => ({
-      url: `${businessConfig.domain}/proyectos/${project.slug}`,
+      url: project.seo?.canonical ?? `${businessConfig.domain}/proyectos/${project.slug}`,
       lastModified: now,
       changeFrequency:
         project.id === "monterrey-proyecto-reciente" ? ("weekly" as const) : ("monthly" as const),

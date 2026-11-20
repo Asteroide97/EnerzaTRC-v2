@@ -20,6 +20,8 @@ export function ProjectCaseStudy({
     project.clientType && { label: "Tipo de cliente", value: customerTypeLabels[project.clientType] },
     { label: "Servicio", value: project.serviceType },
     project.panelCount ? { label: "Paneles", value: `${project.panelCount}` } : null,
+    project.panelWatts && { label: "Potencia por panel", value: `${project.panelWatts} W` },
+    project.capacityKwp && { label: "Potencia nominal total", value: `${project.capacityKwp} kWp DC` },
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
@@ -36,10 +38,10 @@ export function ProjectCaseStudy({
         <div className="space-y-3">
           <p className="field-label text-primary">Caso de estudio</p>
           <h1 className="font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {project.title}
+            {project.heading ?? project.title}
           </h1>
           <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
-            {[project.location, project.clientType && customerTypeLabels[project.clientType], project.serviceType].filter(Boolean).join(" · ")}
+            {project.introduction ?? [project.location, project.clientType && customerTypeLabels[project.clientType], project.serviceType].filter(Boolean).join(" · ")}
           </p>
         </div>
 

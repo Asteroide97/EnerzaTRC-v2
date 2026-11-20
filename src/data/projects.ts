@@ -11,6 +11,22 @@ const losAngelesPhotos = [
   ["modulos-al-atardecer", "Detalle de los módulos con el reflejo del cielo y las montañas al fondo"],
 ].map(([file, alt]) => ({ src: `/images/projects/ampliacion-los-angeles/${file}.jpg`, alt }));
 
+const montebelloPanelCount = 22;
+const montebelloPanelWatts = 620;
+const montebelloCapacityKwp = montebelloPanelCount * montebelloPanelWatts / 1000;
+const montebelloHeading = `Instalación de ${montebelloPanelCount} paneles solares en Montebello`;
+const montebelloDescription = `Proyecto fotovoltaico de Enerza con ${montebelloPanelCount} paneles solares de ${montebelloPanelWatts} W, para una capacidad nominal instalada de ${montebelloCapacityKwp} kWp DC.`;
+
+const montebelloPhotos = [
+  "Vista general de los paneles instalados sobre la azotea de Montebello bajo cielo despejado",
+  "Vista lateral de la fila de módulos y sus soportes sobre la cubierta roja",
+  "Conjunto fotovoltaico visto desde el extremo de la azotea bajo cielo nublado",
+  "Parte inferior de los módulos con los cables y las patas de la estructura de montaje",
+  "Gabinete metálico cerrado bajo los paneles con canalización en la parte inferior",
+  "Equipo eléctrico y elementos de protección en un gabinete de cubierta transparente",
+  "Instrumento de medición sostenido frente a los módulos solares en la azotea",
+].map((alt, index) => ({ src: `/images/projects/montebello/gallery-0${index + 1}.webp`, alt }));
+
 export const projects: Project[] = [
   {
     id: "monterrey-proyecto-reciente",
@@ -99,6 +115,29 @@ export const projects: Project[] = [
     gallery: losAngelesPhotos,
     featured: true,
     relatedCities: ["Torreón", "La Laguna", "Coahuila", "Norte de México"],
+  },
+  {
+    id: "montebello",
+    slug: "instalacion-solar-montebello",
+    title: "Instalación solar en Montebello",
+    heading: montebelloHeading,
+    introduction: montebelloDescription,
+    seo: {
+      title: `${montebelloHeading} | Enerza`,
+      description: montebelloDescription,
+      canonical: "https://www.enerzatrc.com.mx/proyectos/instalacion-solar-montebello",
+    },
+    location: "Montebello",
+    city: "",
+    state: "",
+    serviceType: "Instalación de sistema solar fotovoltaico",
+    panelCount: montebelloPanelCount,
+    panelWatts: montebelloPanelWatts,
+    capacityKwp: montebelloCapacityKwp,
+    coverImage: "/images/projects/montebello/cover.webp",
+    gallery: montebelloPhotos,
+    featured: true,
+    relatedCities: [],
   },
 ];
 

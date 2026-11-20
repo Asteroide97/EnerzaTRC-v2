@@ -17,7 +17,8 @@ function getProjectLocationLabel(project: Project) {
 function getProjectBadges(project: Project) {
   return [
     project.serviceType ? project.serviceType : null,
-    project.panelCount ? `${project.panelCount} paneles` : null,
+    project.panelCount ? [`${project.panelCount} paneles`, project.panelWatts && `de ${project.panelWatts} W`].filter(Boolean).join(" ") : null,
+    project.capacityKwp ? `${project.capacityKwp} kWp DC de potencia fotovoltaica nominal` : null,
   ].filter(Boolean) as string[];
 }
 
@@ -36,7 +37,7 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
       <div
         className={cn(
           "relative overflow-hidden",
-          isCompact ? "aspect-[16/11]" : "aspect-[16/10]",
+          "aspect-[4/3]",
         )}
       >
         <Image
@@ -93,7 +94,7 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
           href={`/proyectos/${project.slug}`}
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
         >
-          Ver caso de estudio
+          Ver proyecto
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

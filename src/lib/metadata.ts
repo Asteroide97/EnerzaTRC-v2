@@ -3,6 +3,7 @@ import { businessConfig } from "@/config/business";
 
 type MetadataInput = {
   title: string;
+  exactTitle?: string;
   description: string;
   path?: string;
   keywords?: string[];
@@ -14,6 +15,7 @@ const defaultImage = "/images/brand/enerza-logo-oficial-cropped.jpg";
 
 export function createMetadata({
   title,
+  exactTitle,
   description,
   path = "/",
   keywords = [],
@@ -21,10 +23,10 @@ export function createMetadata({
   noIndex = false,
 }: MetadataInput): Metadata {
   const canonical = new URL(path, businessConfig.domain).toString();
-  const fullTitle =
+  const fullTitle = exactTitle || (
     title === businessConfig.defaultSeo.defaultTitle
       ? title
-      : `${title} | ${businessConfig.businessName}`;
+      : `${title} | ${businessConfig.businessName}`);
 
   return {
     title: fullTitle,

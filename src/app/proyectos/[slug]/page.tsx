@@ -45,8 +45,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   return createMetadata({
     title: `${project.title} | ${seoLocation || "Enerza TRC"}`,
-    description: `${project.serviceType} en ${project.location}. ${project.results || "Conoce este proyecto de Enerza TRC en Torreón."}`,
-    path: `/proyectos/${project.slug}`,
+    exactTitle: project.seo?.title,
+    description: project.seo?.description ?? `${project.serviceType} en ${project.location}. ${project.results || "Conoce este proyecto de Enerza TRC en Torreón."}`,
+    path: project.seo?.canonical ?? `/proyectos/${project.slug}`,
     keywords,
     image: project.coverImage,
   });
@@ -68,8 +69,8 @@ export default async function ProyectoDetallePage({ params }: ProjectPageProps) 
         data={{
           "@context": "https://schema.org",
           "@type": "CreativeWork",
-          name: project.title,
-          description: `${project.serviceType} en ${project.location}.`,
+          name: project.heading ?? project.title,
+          description: project.introduction ?? `${project.serviceType} en ${project.location}.`,
           about: project.serviceType,
           locationCreated: project.location,
           image: project.gallery.map((photo) => photo.src),
